@@ -1,6 +1,6 @@
 package com.abakudev.retrypattern;
 
-import com.abakudev.retrypattern.retry.RetryController;
+import com.abakudev.retrypattern.retry.ExampleController;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -13,11 +13,11 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 class RetryPatternAppTests {
 
 	@Autowired
-	RetryController retryController;
+	ExampleController exampleController;
 
 	@Test
 	void contextLoads() {
-		Assertions.assertNotNull(retryController);
+		Assertions.assertNotNull(exampleController);
 	}
 
 }

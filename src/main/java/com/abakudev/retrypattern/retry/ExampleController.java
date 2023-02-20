@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-public class RetryController {
+public class ExampleController {
 
-    private final RetryService retryService;
+    private final ExampleService exampleService;
 
-    @GetMapping("/retry/{msg}")
-    public ResponseEntity<String> callService(@PathVariable("msg") String msg)  {
-        return ResponseEntity.ok(retryService.retryExample(msg));
+    @GetMapping("/retry/{name}")
+    public ResponseEntity<String> callService(@PathVariable("name") String name)  {
+        return ResponseEntity.ok(exampleService.retryExample(name));
     }
 }
