@@ -16,8 +16,11 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import org.junit.jupiter.api.DisplayName;
+
 @ExtendWith(SpringExtension.class)
 @WebMvcTest(ExampleController.class)
+@DisplayName("Example Controller Test")
 class ExampleControllerTest {
 
     @MockBean
@@ -27,13 +30,11 @@ class ExampleControllerTest {
     MockMvc mockMvc;
 
     @Test
-    void callService() throws Exception {
-
+    @DisplayName("retryExample")
+    void whenCallService_ThenReturnOk() throws Exception {
         when(this.exampleService.retryExample(anyString())).thenReturn("Hi Abakudev");
-
         mockMvc.perform(get("/retry/{name}", "Abakudev"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", Matchers.is("Hi Abakudev")));
     }
-
 }
