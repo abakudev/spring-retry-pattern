@@ -7,29 +7,28 @@ import org.springframework.retry.annotation.Retryable;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
+import java.util.Objects;
 
 @Slf4j
 @Service
-public class RetryService {
+public class ExampleService {
 
     private int intentos = 0;
 
     @Retryable(value = {RuntimeException.class},
-            maxAttempts = 3,
-            backoff = @Backoff(multiplier = 2))
-    public String retryExample(String s) {
-        log.info("Intento #{} {} ", (intentos++), Instant.now());
-        if (s.equals("error")) {
-            throw new RuntimeException("Error llamando a retryService.");
+            maxAttemptsExpression = "${retry.maxAttempts}",
+            backoff = @Backoff(value = 1000, delayExpression = "${retry.maxDelay}"))
+    public String retryExample(String name) {
+        log.info("Attempt #{} {} ", (++intentos), Instant.now());
+        if (Objects.equals(name, "error")) {
+            throw new RetryException("Error in RetryExampleService.retryExample ");
+        } else {
+            return "Hi " + name;
         }
-        log.info("Acción realizada");
-        return "OK";
     }
     @Recover
     public String retryExampleRecovery(RuntimeException t, String s) {
         log.info("Retry Recovery - {}", t.getMessage());
-        log.info("Recuperada la llamada al servicio que falla");
-        return "Hello from fallback method!!!";
+        return "Retry Recovery OK!";
     }
-
 }
