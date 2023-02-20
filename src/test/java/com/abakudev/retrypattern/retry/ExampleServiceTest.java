@@ -11,6 +11,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
+import org.junit.jupiter.api.DisplayName;
+
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
 @EnableRetry
@@ -20,15 +22,16 @@ class ExampleServiceTest {
     private ExampleService exampleService;
 
     @Test
+    @DisplayName("Test Retry")
     void testRetry() {
         String message = this.exampleService.retryExample("Abakudev");
-        assertEquals("Hi Abakudev", message);
+        assertEquals(message, "Hi Abakudev");
     }
 
     @Test
+    @DisplayName("Recovery Test")
     void retryExampleWithRecoveryTest() throws Exception {
         String result = exampleService.retryExample("error");
-        assertEquals("Retry Recovery OK!", result);
+        assertEquals(result, "Retry Recovery OK!");
     }
-
 }
