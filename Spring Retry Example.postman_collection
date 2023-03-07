@@ -1,0 +1,48 @@
+{
+	"info": {
+		"_postman_id": "54ad9172-6422-4861-b50c-e0909edf7562",
+		"name": "Spring Retry",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13157462"
+	},
+	"item": [
+		{
+			"name": "/retry/{msg}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/retry/abaku",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"retry",
+						"abaku"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/retry/error",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/retry/error",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"retry",
+						"error"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
