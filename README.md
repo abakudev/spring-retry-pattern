@@ -125,7 +125,7 @@ public class DatabaseService {
 
 En este ejemplo, la anotación @Retryable indica que el método readDataFromDatabase debe ser reintentado en caso de fallo de la conexión a la base de datos, hasta un máximo de 3 intentos. La anotación @Backoff indica que se debe esperar 5 segundos entre cada intento. La anotación @Recover indica el método que se debe llamar si la operación falla después de los 3 intentos. La clase JdbcTemplate de Spring es una herramienta para simplificar el acceso a bases de datos mediante JDBC.
 
-### Parametrizar Reintentos con RestTemplate
+### Parametrizar Reintentos con RetryTemplate
 
 Para parametrizar los reintentos en Spring Retry, se puede utilizar la clase `RetryTemplate`. Esta clase permite configurar diferentes opciones, como el número máximo de reintentos, la estrategia de espera entre reintentos, y la condición para decidir cuándo reintentar una operación.
 
